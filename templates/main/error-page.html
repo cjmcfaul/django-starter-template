@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block head_title %}{{ error_number }} {% trans "Error" %}{% endblock %}
+
+{% block body_content %}
+    <div class="container error-page">
+        <div class="d-flex justify-content-center pb-5">
+            <div class="text-center pt-5 pb-5 mb-sm-5">
+                <h1 class="text-primary font-weight-light mb-5">{{ error_number }}</h1>
+                <p class="mt-4 text-alt text-muted">
+                    {{ error_message }} Go back <a href="{% url 'index' %}">home</a>?
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock body_content %}

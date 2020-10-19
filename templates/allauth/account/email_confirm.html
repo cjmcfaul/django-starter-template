@@ -1,0 +1,30 @@
+{% extends 'base-content-right-page.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Confirm E-mail Address{% endblock %}
+{% block head %}{% endblock %}
+{% block content %}
+<h3 class="signup-form-title font-blue">Confirm E-mail Address</h3>
+    <div class="signup-form-container account-page-text mt-2 mb-2">
+        {% if confirmation %}
+            <p>Please confirm that <a href="mailto:{{ confirmation.email_address.email  }}">{{
+                confirmation.email_address.email }}</a> is your e-mail address</p>
+            <form method="POST" action="{% url 'account_confirm_email' confirmation.key %}" class="password_change">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="d-flex justify-content-center mt-4">
+                    <button type="submit" class="btn btn-primary mt-1 mb-2">Confirm</button>
+                </div>
+            </form>
+        {% else %}
+            <p>This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail
+            confirmation request</a>.</p>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block imgclass %}email-confirm-img{% endblock %}
+{% block logo %}
+<a class="float-right mt-3 mr-3" href="{% url 'home' %}">
+    <img src="{% static 'media/logos/Servstry_Logo_All_White.png' %}" width="225">
+</a>
+{% endblock %}

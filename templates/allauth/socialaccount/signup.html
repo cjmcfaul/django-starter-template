@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static crispy_forms_tags %}
+{% block title %}Profile Information{% endblock %}
+{% block head %}{% endblock %}
+{% block content %}
+<h3 class="signup-form-title mb-0 font-blue">Profile Information</h3>
+<div class="signup-form-container account-page-text mt-5 mb-2">
+    <form method="post" runat="server" id="signUpForm">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="hidden" name="next" value="{% url 'user-contact-info' %}"/>
+        <hr>
+        <div class="d-flex justify-content-center mt-3 mb-3">
+            <button class="btn btn-blue">Next</button>
+        </div>
+    </form>
+</div>
+{{ form.media }}
+{% endblock %}
+{% block imgclass %}signup-img-contact{% endblock %}

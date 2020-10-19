@@ -1,0 +1,20 @@
+{% extends 'base-content-left-page.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Sign Up{% endblock %}
+{% block head %}
+
+{% endblock %}
+{% block content %}
+    <h3 class="signup-form-title mb-0 font-blue">Sign Up</h3>
+    <small class="text-muted">or <a href="{% url 'account_login' %}">log in to your account</a></small>
+    <div class="account-page-text mt-5 mb-2">
+        {% include 'register/snippets/signup-widget.html' %}
+    </div>
+{% endblock %}
+{% block imgclass %}signup-form-img{% endblock %}
+{% block logo %}
+<a class="float-right mt-3 mr-3" href="{% url 'home' %}">
+    <img src="{% static 'media/logos/Servstry_Logo_White.png' %}" width="225">
+</a>
+{% endblock %}

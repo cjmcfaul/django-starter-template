@@ -1,0 +1,48 @@
+{% load static i18n %}
+{% load render_bundle webpack_static from webpack_loader %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <meta charset="utf-8">
+        <title>{% block head_title %}{% endblock head_title %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <meta name="author" content="{% block head_author %}{% endblock head_author %}">
+        <meta name="description" content="{% block head_description %}{% endblock head_description %}">
+    {% endblock head %}
+    {% include "partials/google_analytics.html" %}
+    {% block css %}
+      {% if WEBPACK_ENABLED %}
+        {% render_bundle 'vendors' 'css' %}
+        {% render_bundle 'main' 'css' %}
+      {% else %}
+        <link href="{% static 'vendors.css' %}" rel="stylesheet">
+        <link href="{% static 'main.css' %}" rel="stylesheet">
+      {% endif %}
+    {% endblock css %}
+
+    {% block extra_css %}
+    {% endblock extra_css %}
+</head>
+<body>
+    {% if not navbar %}
+        {% include "partials/navbar.html" %}
+    {% endif %}
+    {% block body_content %} {# block 'content' would clash with machina #}
+    {% endblock %}
+    {% if not footer %}
+        {% include "partials/footer.html" %}
+    {% endif %}
+    {% block js %}
+        {% if WEBPACK_ENABLED %}
+            {% render_bundle 'vendors' 'js' %}
+            {% render_bundle 'main' 'js' %}
+        {% else %}
+            <script src="{% static 'vendors.bundle.js' %}"></script>
+            <script src="{% static 'main.bundle.js' %}"></script>
+        {% endif %}
+    {% endblock %}
+    {% block extra_js %}
+    {% endblock extra_js %}
+</body>
+</html>

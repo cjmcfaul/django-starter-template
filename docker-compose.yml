@@ -1,0 +1,42 @@
+version: '3'
+
+services:E
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB={{ project_name }}-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    environment:
+      - cluster.name=docker-cluster
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+    volumes:
+      - /elasticsearch.yml
+    ports:
+      - 9200:9200
+  web:
+    build: .
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    container_name: {{ project_name }}
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+        - db
+  celery:
+    build: .
+    command: celery -A {{ project_name }} worker --loglevel=info
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+      - redis

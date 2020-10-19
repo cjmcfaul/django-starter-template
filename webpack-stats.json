@@ -1,0 +1,25 @@
+{
+  "status": "done",
+  "chunks": {
+    "vendors": [
+      {
+        "name": "vendors.css",
+        "path": "/Users/colinmcfaul/Desktop/Code/django-starter-template/frontend/static/vendors.css"
+      },
+      {
+        "name": "vendors.bundle.js",
+        "path": "/Users/colinmcfaul/Desktop/Code/django-starter-template/frontend/static/vendors.bundle.js"
+      }
+    ],
+    "main": [
+      {
+        "name": "main.css",
+        "path": "/Users/colinmcfaul/Desktop/Code/django-starter-template/frontend/static/main.css"
+      },
+      {
+        "name": "main.bundle.js",
+        "path": "/Users/colinmcfaul/Desktop/Code/django-starter-template/frontend/static/main.bundle.js"
+      }
+    ]
+  }
+}
