@@ -4,6 +4,9 @@ RUN mkdir /code
 WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
+COPY package*.json ./
+RUN npm install
 COPY . /code/
 RUN python manage.py collectstatic --noinput
 CMD {{ project_name }}.asgi:application --port $PORT --bind 0.0.0.0 -v2
+CMD npm run dev

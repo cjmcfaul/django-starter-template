@@ -24,6 +24,12 @@ the git repository. Replace "my-project" with the name of your project.
 
 `django-admin startproject --template=https://github.com/colinmipapi/django-starter-template/archive/main.zip --name=Dockerfile --extension=py,yml,json,env my_project .`
 
+<p>Setup the example.env file as your .env file</p>
+
+`mv example.env .env`
+
 <p>Now you are able to setup Docker</p>
 
 `docker-compose up --build`
+
+<p></p>
