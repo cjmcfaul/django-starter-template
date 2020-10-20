@@ -1,4 +1,4 @@
-{% load static i18n %}
+{% load static i18n crispy_forms_tags %}
 {% load render_bundle webpack_static from webpack_loader %}
 <!DOCTYPE html>
 <html>
@@ -28,7 +28,7 @@
     {% if not navbar %}
         {% include "partials/navbar.html" %}
     {% endif %}
-    {% block body_content %} {# block 'content' would clash with machina #}
+    {% block body_content %}
     {% endblock %}
     {% if not footer %}
         {% include "partials/footer.html" %}
