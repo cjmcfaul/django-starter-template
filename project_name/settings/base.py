@@ -64,11 +64,12 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 ]
 
 LIBRARY_APPS = [
     # django-webpack-loader (https://github.com/owais/django-webpack-loader)
-    'webpack-loader',
+    'webpack_loader',
     # django-crispy-forms (https://django-crispy-forms.readthedocs.io/en/latest/)
     'crispy_forms',
     # django-rest-framework (https://www.django-rest-framework.org/#)
@@ -97,7 +98,7 @@ INSTALLED_APPS = DJANGO_APPS + LIBRARY_APPS + PROJECT_APPS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres:///{{ project_name }}-db")
+    "default": env.db("DATABASE_URL", default="postgres://postgres:postgres@db:5432/{{ project_name }}-db")
 }
 
 # MIDDLEWARE
