@@ -26,13 +26,6 @@ if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
     env.read_env(str(BASE_DIR / ".env"))
 
-# PROJECT DETAILS
-# ------------------------------------------------------------------------------
-# These variables are used to populate data in the default templates
-PROJECT_VERBOSE_NAME = env.str('PROJECT_VERBOSE_NAME', default='{{ project_name }}')
-PROJECT_LOGO_URL = env.str('PROJECT_LOGO_URL', default=None)
-PROJECT_PHONE_NUMBER = env('PROJECT_PHONE_NUMBER', default='')
-
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
@@ -54,6 +47,13 @@ USE_L10N = True
 USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#locale-paths
 LOCALE_PATHS = [str(BASE_DIR / "locale")]
+
+# PROJECT DETAILS
+# ------------------------------------------------------------------------------
+# These variables are used to populate data in the default templates
+PROJECT_VERBOSE_NAME = env.str('PROJECT_VERBOSE_NAME', default='{{ project_name }}')
+PROJECT_LOGO_URL = env.str('PROJECT_LOGO_URL', default=None)
+PROJECT_PHONE_NUMBER = env('PROJECT_PHONE_NUMBER', default='')
 
 # APPS
 # ------------------------------------------------------------------------------
@@ -266,7 +266,7 @@ MANAGERS = ADMINS
 # Third Party Apps Settings
 # ------------------------------------------------------------------------------
 
-# Django Allauth
+# DJANGO ALLAUTH
 # ------------------------------------------------------------------------------
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_PROVIDERS = {
@@ -284,18 +284,18 @@ SOCIALACCOUNT_PROVIDERS = {
 # https://docs.celeryproject.org/en/stable/userguide/configuration.html
 
 # https://docs.celeryproject.org/en/stable/userguide/configuration.html#std-setting-broker_url
-CELERY_BROKER_URL = env('CELERY_BROKER_URL', default='redis://redis:6379')
+CELERY_BROKER_URL = env('DJANGO_CELERY_BROKER_URL', default='redis://redis:6379')
 # https://docs.celeryproject.org/en/stable/userguide/configuration.html#std-setting-result_backend
-CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND', default='redis://redis:6379/0')
+CELERY_RESULT_BACKEND = env('DJANGO_CELERY_RESULT_BACKEND', default='redis://redis:6379/0')
 # https://docs.celeryproject.org/en/stable/userguide/configuration.html#std-setting-accept_content
 CELERY_ACCEPT_CONTENT = ['application/json']
 
-# Django Elasticsearch DSL
+# Django ELASTICSEARCH DSL
 # ------------------------------------------------------------------------------
 # https://django-elasticsearch-dsl.readthedocs.io/en/latest/settings.html
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': env('ELASTICSEARCH_HOST', default='localhost:9200'),
+        'hosts': env('DJANGO_ELASTICSEARCH_HOST', default='localhost:9200'),
         'timeout': 30,
     },
 }
