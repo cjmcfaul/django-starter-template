@@ -25,14 +25,18 @@
     {% endblock extra_css %}
 </head>
 <body>
-    {% if not navbar %}
-        {% include "partials/navbar.html" %}
-    {% endif %}
+    {% block body_navbar %}
+        {% if not navbar %}
+            {% include "partials/navbar.html" %}
+        {% endif %}
+    {% endblock body_navbar %}
     {% block body_content %}
     {% endblock %}
-    {% if not footer %}
-        {% include "partials/footer.html" %}
-    {% endif %}
+    {% block body_footer %}
+        {% if not footer %}
+            {% include "partials/footer.html" %}
+        {% endif %}
+    {% endblock body_footer %}
     {% block js %}
         {% if WEBPACK_ENABLED %}
             {% render_bundle 'vendors' 'js' %}

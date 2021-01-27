@@ -34,7 +34,7 @@ services:
         - db
   celery:
     build: .
-    command: celery -A {{ project_name }} worker -l INFO
+    command: celery -A {{ project_name }} worker -l INFO -B
     volumes:
       - .:/code
     depends_on:

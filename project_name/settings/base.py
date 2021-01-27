@@ -256,7 +256,7 @@ EMAIL_TIMEOUT = 5
 # ADMIN
 # ------------------------------------------------------------------------------
 # Django Admin URL regex.
-ADMIN_URL = env("DJANGO_ADMIN_URL", default="admin/")
+ADMIN_URL = env("DJANGO_ADMIN_URL", default="admin")
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = []
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -295,7 +295,7 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 # https://django-elasticsearch-dsl.readthedocs.io/en/latest/settings.html
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': env('DJANGO_ELASTICSEARCH_HOST', default='localhost:9200'),
+        'hosts': env('DJANGO_ELASTICSEARCH_HOST', default='elasticsearch:9200'),
         'timeout': 30,
     },
 }
