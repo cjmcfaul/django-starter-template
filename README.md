@@ -5,9 +5,10 @@
 You need to having the following programs setup on your system before 
 trying to install/run this project.
 
-1. Python3 
-2. Docker
-3. Git 
+1. python3 
+2. docker
+3. git
+4. npm
 
 ## Installation
 
@@ -59,7 +60,7 @@ settings files where the environment variable is used.
 DJANGO_DEBUG=TRUE
 SECRET_KEY=-68!#6l7u9uavsq+pl%v0b%2rgi(0y5c!fl8x2xci9t8banjbk3
 DJANGO_SETTINGS_MODULE={{ project_name }}.settings.local
-
+DJANGO_READ_DOT_ENV_FILE=True
 DJANGO_ALLOWED_HOSTS=
 ```
 
