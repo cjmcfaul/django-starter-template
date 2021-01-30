@@ -2,16 +2,16 @@
 
 ## Prerequisites
 
-You need to having the following programs setup on your system before 
+You need to having the following programs setup on your system before
 trying to install/run this project.
 
-1. Python3 
+1. Python3
 2. Docker
-3. Git 
+3. Git
 
 ## Installation
 
-1. Create a new directory for your project and move into it. You should 
+1. Create a new directory for your project and move into it. You should
 replace `my-project` with the name of your project.
 ```bash
 mkdir my-project && cd $_
@@ -27,21 +27,27 @@ python3 -m venv venv && source venv/bin/activate
 pip3 install django
 ```
 
-4. Finally, start the django project from a template using 
+4. Finally, start the django project from a template using
 the git repository. Replace `my-project` with the name of your project.
 ```bash
 django-admin startproject --template=https://github.com/colinmipapi/django-starter-template/archive/main.zip --name=Dockerfile --extension=py,yml,json,env my_project .
 ```
 
-5. Setup the example.env file as your .env file. The default variables 
-have been configured, but there are additional variables that can be 
-set to help customize your project. 
+5. Install the python packages from the repo requirements.txt file.
+
+```bash
+pip3 install -r requirements.txt
+```
+
+6. Setup the example.env file as your .env file. The default variables
+have been configured, but there are additional variables that can be
+set to help customize your project.
 ```bash
 mv example.env .env
 ```
 
 
-6. Now you are able to setup Docker
+7. Now you are able to setup Docker
 ```bash
 docker-compose up --build
 ```
@@ -51,7 +57,7 @@ docker-compose up --build
 ## Configuration
 
 ### Environment Variables
-The sections of the example.env file match up with the sections of the 
+The sections of the example.env file match up with the sections of the
 settings files where the environment variable is used.
 
 #### General
@@ -130,8 +136,8 @@ DJANGO_ELASTICSEARCH_HOST=
 
 ## Coming Soon!
 
-I'm going to try and add additional features and functionality to the 
-project over the coming weeks and months. Feel free to reach out if 
+I'm going to try and add additional features and functionality to the
+project over the coming weeks and months. Feel free to reach out if
 there's anything else you think should be added to the list.
 
 - [ ] Base Templates
